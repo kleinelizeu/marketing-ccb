@@ -1,0 +1,50 @@
+# negocio.perguntas — Agência de marketing / social media (SDR para o Instagram da própria agência).
+
+[campo]
+placeholder = NOME_NEGOCIO
+valida = valida_nao_vazio
+texto = Qual o nome da sua agência?
+
+[campo]
+placeholder = O_QUE_VENDE
+valida = valida_nao_vazio
+texto = Em uma ou duas frases: quais serviços a agência oferece? (ex.: "gestão de tráfego, social media e criação de conteúdo")
+
+[campo]
+placeholder = CLIENTE_IDEAL
+valida = valida_nao_vazio
+texto = Quem é o cliente ideal da agência? (ex.: "donos de clínica e e-commerce que querem vender mais pela internet")
+
+[campo]
+placeholder = FAIXA_PRECO
+opcional = sim
+default = (sob proposta)
+texto = Qual a faixa de investimento ou ticket inicial dos seus serviços? (ex.: "a partir de R$ 1.500/mês") — Enter pula
+
+[campo]
+placeholder = INSTAGRAM_HANDLE
+tipo = instagram
+texto = Qual o @ do Instagram da agência? (ex.: @minhaagencia)
+
+[menu]
+placeholder = TOM_DE_VOZ_DESCRICAO
+titulo = Como você gosta de falar com o lead?
+texto = Escolha (1 a N):
+opcao = Estratégico e confiante | Fale de forma estratégica e confiante: mostra domínio do assunto, fala em resultado e crescimento, sem ser arrogante.
+opcao = Próximo e moderno | Fale de forma próxima e moderna: leve, atual, linguagem de quem entende de redes sociais, sem formalidade engessada.
+opcao = Profissional e direto | Fale de forma profissional e direta: objetivo, claro, focado em resolver o problema do lead sem enrolação.
+outro = sim
+
+[campo]
+placeholder = RESTRICOES
+opcional = sim
+default = Nunca fechar proposta, contrato ou valor final sozinho; sempre qualificar e encaminhar para reunião.
+texto = Tem algo que o agente NUNCA deve fazer ou prometer? (ex.: "nunca garantir número de vendas") — Enter pula
+
+[menu]
+placeholder = REGRA_PRECO
+titulo = Quando alguém pergunta preço ou quer contratar, o que o agente deve fazer?
+texto = Escolha (1 a N):
+opcao = Qualificar e convidar para diagnóstico | Não crave valor no comentário; explique que o investimento depende do diagnóstico, faça as perguntas de qualificação e convide a pessoa para uma reunião de diagnóstico gratuita.
+opcao = Citar a faixa e convidar pra reunião | Pode citar a faixa de investimento ou ticket inicial acima como referência e, em seguida, qualificar e convidar para uma reunião de diagnóstico.
+opcao = Avisar você antes | Não responda valores nem proponha reunião sozinho: avise o dono no Telegram e aguarde antes de dar qualquer informação.

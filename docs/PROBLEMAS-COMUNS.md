@@ -1,0 +1,46 @@
+# Problemas comuns (e como resolver)
+
+A maioria se resolve rodando:
+
+```bash
+hermes-marketing doctor
+```
+
+---
+
+### "Comentei/mandei DM e o agente não respondeu"
+**Quase sempre não é bug.** O Zernio só dispara o webhook para interações de **outra** pessoa. Teste de **outra conta** do Instagram.
+
+### "As respostas pararam de funcionar do nada" (instalação nativa)
+O endereço do túnel (Cloudflare) provavelmente **mudou** (a VPS reiniciou). Rode `hermes-marketing doctor`: ele mostra o **endereço novo**. Atualize no painel do Zernio em *Webhooks → seu webhook → Endpoint URL*.
+
+### "O bot do Telegram não responde"
+O token pode ter sido revogado no @BotFather. Rode `hermes-marketing` de novo e cole o token atual.
+
+### "O agente fechou contrato / cravou preço / prometeu resultado sozinho"
+Não deveria. As regras da agência (qualificar, convidar para o diagnóstico, nunca fechar valor nem prometer número de vendas) ficam no contexto do negócio. Rode `hermes-marketing contexto`, confira o texto e cole de novo no bot pedindo "salve isso na sua memória". Se persistir, rode `hermes-marketing` e ajuste a resposta sobre "o que o agente NUNCA deve fazer" e a "regra de preço".
+
+### "O agente respondeu 'qual contato? qual interação?'"
+A rota do webhook está sem os dados do evento. O assistente cria a rota com o marcador `{__raw__}`. Rode `hermes-marketing doctor` para recriar.
+
+### "O Zernio mostra 200/sucesso, mas o agente não age"
+A rota não pode ter **filtro de eventos**. O assistente cria a rota **sem filtro**. Rode `hermes-marketing doctor`.
+
+### "O Zernio mostra 401 (não autorizado)"
+A **chave de segurança** (Signing Secret) no painel do Zernio difere da que está na VPS. Rode `hermes-marketing info` para ver a chave certa e cole no Zernio.
+
+### "Depois de atualizar o Hermes, parou" (instalação nativa)
+Atualizar o Hermes apaga o ajuste da assinatura (`X-Zernio-Signature`). Rode `hermes-marketing doctor` — ele reaplica.
+
+### "Depois de um `docker compose down/up`, parou" (Docker)
+O assistente já deixa um ajuste que reaplica sozinho a cada reinício do container. Se ainda falhar, rode `hermes-marketing doctor`.
+
+### "A resposta demora vários minutos"
+Depende do modelo de IA configurado no seu Hermes. Modelos gratuitos costumam ser mais lentos. Configure um modelo mais rápido no perfil.
+
+### "O agente está respondendo todo mundo igual e não qualifica"
+Ele precisa do contexto do negócio na memória. Rode `hermes-marketing contexto`, copie o texto e cole no bot do Telegram pedindo "salve isso na sua memória". É lá que estão as perguntas de qualificação e a regra de convidar para o diagnóstico.
+
+---
+
+Se nada disso resolver, leve a saída do `hermes-marketing doctor` para a comunidade.
